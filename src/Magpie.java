@@ -22,9 +22,6 @@ public class Magpie{
 	public String getGreeting(){
 		return "Hello, how are you?";
 	}
-	public String getGreetingresponse(){
-		return "Good, what can I help you with today";
-	}
 	
 	/**
 	 * Gives a response to a user statement
@@ -33,6 +30,7 @@ public class Magpie{
 	 *            the user statement
 	 * @return a response based on the rules given
 	 */
+
 	public String getResponse(String statement){
 		statement = statement.toLowerCase();
 		String response = "";
@@ -74,6 +72,10 @@ public class Magpie{
 		else{
 			response = getRandomResponse();
 		}
+		if (statement.indexOf("how are you") >= 0)
+			response = "Good, what can I help you with today";
+		
+		
 		return response;
 	}
 	
