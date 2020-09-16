@@ -91,15 +91,12 @@ public class Magpie{
 		// Look for a two word (you <something> me)
 		// pattern
 		int psn = findKeyword(statement, "i", 0);
-
-
-		//int startingPosition = statement.indexOf("i") +2;
-		int Julia = statement.length()-4;
-		String whatYouWant = statement.substring(2,Julia);
 		
 		if (psn >= 0
 			&& findKeyword(statement, "you", psn) >= 0)
 		{
+			int Julia = statement.length()-4;
+			String whatYouWant = statement.substring(2,Julia);
 			response = "Why do you " + whatYouWant + " me?";
 		}
 		else
