@@ -40,8 +40,7 @@ public class Magpie{
 		else if (findKeyword(statement, "mother") >= 0
 				|| findKeyword(statement,"father") >= 0
 				|| findKeyword(statement, "sister") >= 0
-				|| findKeyword(statement, "brother") >= 0)
-		{
+				|| findKeyword(statement, "brother") >= 0){
 			if(lastTopic.equals("family")){
 				response = "I think your family sounds fun";
 			}else{
@@ -49,6 +48,23 @@ public class Magpie{
 			}
 			lastTopic = "family";
 			
+		}
+		else if (findKeyword(statement, "hot") >= 0
+				|| findKeyword(statement,"cold") >= 0
+				|| findKeyword(statement, "raining") >= 0
+				|| findKeyword(statement, "storming") >= 0
+				|| findKeyword(statement, "tornado") >= 0
+				|| findKeyword(statement,"cloudy") >= 0
+				|| findKeyword(statement, "windy") >= 0
+				|| findKeyword(statement, "snowy") >= 0){
+			if(lastTopic.equals("weather")){
+				response = "It does not seem comfortable outside";
+			}
+			else{
+				response = "Tell me more about the weather";
+			}
+			lastTopic = "weather";
+
 		}
 		else if (findKeyword(statement, "cat") >= 0
 			|| findKeyword(statement, "dog") != -1
@@ -89,25 +105,6 @@ public class Magpie{
 		}
 		return response;
 	}
-
-		// Look for a two word (you <something> me)
-		// pattern
-		
-		/*else if (findKeyword(statement,"i") >=0 && findKeyword(statement, "you", statement.length()-4) >=0)
-		{
-			int Julia = statement.length()-4;
-			String whatYouWant = statement.substring(2,Julia);
-			response = "Why do you " + whatYouWant + " me?";
-		}
-		else
-		{
-			response = getRandomResponse();
-		}
-		
-		
-		return response;
-	
-		}*/
 	/**
 	 * Pick a default response to use if nothing else fits.
 	 * @return a non-committal string
