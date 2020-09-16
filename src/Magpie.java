@@ -65,35 +65,35 @@ public class Magpie{
 		else if (findKeyword(statement, "mr. adiletta") >= 0
 			|| findKeyword(statement, "mr. a") >= 0
 			|| findKeyword(statement, "mr.a") >= 0
-			|| findKeyword(statement, "mr.adiletta") >=0 )
-		{
+			|| findKeyword(statement, "mr.adiletta") >=0 ){
 			response = "Mr. A sounds so cool!";
 		}
-		else{
-			response = getRandomResponse();
-		}
-		if (findKeyword(statement, "how are you") >= 0)
+		else if (findKeyword(statement, "how are you") >= 0)
 			response = "Good, what can I help you with today";
 		
-		else if(findKeyword(statement, "i want") >= 0) {
+		else if (findKeyword(statement,"i") >=0 && findKeyword(statement, "you", statement.length()-4) >=0){
+			int Julia = statement.length()-4;
+			String whatYouWant = statement.substring(2,Julia);
+			response = "Why do you " + whatYouWant + " me?";
+		}
+		
+		else if (findKeyword(statement, "i want") >= 0) {
 			int startingPosition = statement.indexOf("i want") +7;
 			String objectOfYourDesire = statement.substring(startingPosition);
 			response = "Would you really be happy if you had " + objectOfYourDesire; 
 		}
-				// Responses which require transformations
-	
-		
+
 		else
 		{
-		/*else if (findKeyword(statement, "i") >=0 && findKeyword(statement,"you", 3) >0){
+			response = getRandomResponse();
+		}
+		return response;
+	}
 
-		}*/
 		// Look for a two word (you <something> me)
 		// pattern
-		int psn = findKeyword(statement, "i", 0);
 		
-		if (psn >= 0
-			&& findKeyword(statement, "you", psn) >= 0)
+		/*else if (findKeyword(statement,"i") >=0 && findKeyword(statement, "you", statement.length()-4) >=0)
 		{
 			int Julia = statement.length()-4;
 			String whatYouWant = statement.substring(2,Julia);
@@ -103,11 +103,11 @@ public class Magpie{
 		{
 			response = getRandomResponse();
 		}
-		}
+		
 		
 		return response;
-	}
 	
+		}*/
 	/**
 	 * Pick a default response to use if nothing else fits.
 	 * @return a non-committal string
